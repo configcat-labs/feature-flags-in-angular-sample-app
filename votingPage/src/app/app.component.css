@@ -1,0 +1,13 @@
+div {
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+    text-align: center;
+    
+  }
+  
+  #votingForm {
+      display:flex;
+      flex-direction:column;
+      width: 10%;
+  }
