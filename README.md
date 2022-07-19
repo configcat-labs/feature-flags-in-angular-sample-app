@@ -8,3 +8,22 @@ The app is a simple page that enables users to vote on a photo by assigning grad
 - npm install
 - ng serve --open
 
+## Learn more
+
+Useful links to technical resources.
+
+Example:
+- Next.js Documentation - learn about Next.js features and API.
+- Learn Next.js - an interactive Next.js tutorial.
+
+[**ConfigCat**](https://configcat.com) also supports many other frameworks and languages. Check out the full list of supported SDKs [here](https://configcat.com/docs/sdk-reference/overview/)
+
+You can also explore other code samples for various languages, frameworks, and topics here in the [ConfigCat labs](https://github.com/configcat-labs) on GitHub.
+
+Keep up with ConfigCat on [Twitter](https://twitter.com/configcat), [Facebook](https://www.facebook.com/configcat), [LinkedIn](https://www.linkedin.com/company/configcat/), and [GitHub](https://github.com/configcat).
+
+## Author
+[Your Name](https://github.com/your_name)
+
+## Contributions
+Contributions are welcome!
