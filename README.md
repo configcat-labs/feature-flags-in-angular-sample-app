@@ -9,7 +9,7 @@ The app is a simple page that enables users to vote on a photo by assigning grad
 - ng serve --open
 
 ## Learn more
-Read more about Angular right **[here](https://angular.io)**.
+Read more about Angular **[here](https://angular.io)**.
 
 [**ConfigCat**](https://configcat.com) also supports many other frameworks and languages. Check out the full list of supported SDKs [here](https://configcat.com/docs/sdk-reference/overview/)
 
