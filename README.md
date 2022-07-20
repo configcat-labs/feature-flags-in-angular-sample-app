@@ -9,12 +9,7 @@ The app is a simple page that enables users to vote on a photo by assigning grad
 - ng serve --open
 
 ## Learn more
-
-Useful links to technical resources.
-
-Example:
-- Next.js Documentation - learn about Next.js features and API.
-- Learn Next.js - an interactive Next.js tutorial.
+Read more about Angular right **[here](https://angular.io)**.
 
 [**ConfigCat**](https://configcat.com) also supports many other frameworks and languages. Check out the full list of supported SDKs [here](https://configcat.com/docs/sdk-reference/overview/)
 
