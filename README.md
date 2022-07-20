@@ -23,7 +23,7 @@ You can also explore other code samples for various languages, frameworks, and t
 Keep up with ConfigCat on [Twitter](https://twitter.com/configcat), [Facebook](https://www.facebook.com/configcat), [LinkedIn](https://www.linkedin.com/company/configcat/), and [GitHub](https://github.com/configcat).
 
 ## Author
-[Your Name](https://github.com/your_name)
+[Roxana Halati](https://github.com/roxanahalati)
 
 ## Contributions
 Contributions are welcome!
