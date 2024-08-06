@@ -5,6 +5,7 @@ The app is a simple page that enables users to vote on a photo by assigning grad
 ## Setup and Run
 
 - clone repository
+- cd votingPage
 - npm install
 - ng serve --open
 
