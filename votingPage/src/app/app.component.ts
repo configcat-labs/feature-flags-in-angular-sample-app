@@ -11,11 +11,15 @@ export class AppComponent {
   votingFeatureEnabled: boolean = false;
 
   constructor() {
-    let configCatClient = configcat.createClient(
+    const configCatClient = configcat.getClient(
       'configcat-sdk-1/cIXcCIFM50eL1D7-bo-KNw/AoEy1jmHOUCAxu7cBz0ypA'
     );
-    console.log(configCatClient.getValueAsync('grandFeature', false));
-    configCatClient.getValueAsync('grandFeature', false).then((value) => {
+
+   
+
+    configCatClient.getValueAsync('GrandFeature', false).then((value) => {
+      console.log(value);
+
       this.votingFeatureEnabled = value;
     });
   }
