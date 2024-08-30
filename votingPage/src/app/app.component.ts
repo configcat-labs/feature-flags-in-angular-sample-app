@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import * as configcat from 'configcat-js';
 
 @Component({
@@ -6,56 +6,60 @@ import * as configcat from 'configcat-js';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'votingPage';
   votingFeatureEnabled: boolean = false;
-  votingMode: string = 'Single Vote'; // Default mode
-  countdown: number = 60; // Countdown in seconds
-  votes: number[] = []; // Array to store votes
+  votingMode: string = 'single'; // 'single' or 'multiple'
+  votes: number[] = [];
   votingClosed: boolean = false;
-  intervalId: any;
+  countdown: number = 60; // 1 minute countdown
 
   constructor() {
     const configCatClient = configcat.getClient(
       'configcat-sdk-1/cIXcCIFM50eL1D7-bo-KNw/AoEy1jmHOUCAxu7cBz0ypA'
     );
 
-    // Fetch feature flag value
     configCatClient.getValueAsync('GrandFeature', false).then((value) => {
       console.log(value);
-      this.votingFeatureEnabled = value;
 
-      // If the feature is enabled, start the countdown timer
-      if (this.votingFeatureEnabled) {
-        this.startCountdown();
-      }
+      this.votingFeatureEnabled = value;
     });
+
+    this.startCountdown();
   }
 
-  ngOnInit(): void {}
-
   startCountdown() {
-    this.intervalId = setInterval(() => {
-      if (this.countdown > 0) {
-        this.countdown--;
-      } else {
+    const interval = setInterval(() => {
+      this.countdown -= 1;
+      if (this.countdown <= 0) {
+        clearInterval(interval);
         this.votingClosed = true;
-        clearInterval(this.intervalId);
       }
     }, 1000);
   }
 
   submitVote(vote: number) {
-    if (!this.votingClosed) {
-      if (this.votingMode === 'Single Vote' && this.votes.length === 0) {
-        this.votes.push(vote);
-      } else if (this.votingMode === 'Multiple Votes') {
-        this.votes.push(vote);
-      }
+    if (vote < 1 || vote > 10) {
+      alert('Please enter a vote between 1 and 10.');
+      return;
+    }
+
+    if (this.votingMode === 'single') {
+      this.votes = [vote]; // Only allow one vote in 'single' mode
+      this.votingClosed = true; // Disable further voting
+    } else {
+      this.votes.push(vote);
     }
   }
 
+  switchVotingMode(mode: string) {
+    this.votingMode = mode;
+    this.votes = []; // Reset votes when mode changes
+    this.votingClosed = false; // Re-enable voting
+  }
+
   getAverageVote() {
+    if (this.votes.length === 0) return 0;
     const sum = this.votes.reduce((a, b) => a + b, 0);
     return (sum / this.votes.length).toFixed(2);
   }

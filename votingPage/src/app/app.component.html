@@ -9,12 +9,34 @@
     class="logo"
   />
 
+  <div class="voting-mode">
+    <label>
+      <input
+        type="radio"
+        name="mode"
+        value="single"
+        (change)="switchVotingMode('single')"
+        [checked]="votingMode === 'single'"
+      />
+      Single Vote
+    </label>
+    <label>
+      <input
+        type="radio"
+        name="mode"
+        value="multiple"
+        (change)="switchVotingMode('multiple')"
+        [checked]="votingMode === 'multiple'"
+      />
+      Multiple Votes
+    </label>
+  </div>
+
   <div
     class="voting-form"
     *ngIf="votingFeatureEnabled && !votingClosed; else votingClosedTemplate"
   >
     <h3>Time left: {{ countdown }} seconds</h3>
-    <p>Voting Mode: {{ votingMode }}</p>
 
     <input
       type="number"
@@ -23,8 +45,13 @@
       max="10"
       placeholder="Enter your vote"
       class="vote-input"
+      [disabled]="votingClosed"
     />
-    <button class="vote-button" (click)="submitVote(voteInput.valueAsNumber)">
+    <button
+      class="vote-button"
+      (click)="submitVote(voteInput.valueAsNumber)"
+      [disabled]="votingMode === 'single' && votes.length > 0"
+    >
       Send Vote!
     </button>
 
