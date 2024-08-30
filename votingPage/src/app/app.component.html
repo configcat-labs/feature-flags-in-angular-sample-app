@@ -1,11 +1,12 @@
 <div class="container">
-  <h1>Welcome to the voting system</h1>
+  <h1>Welcome to the Voting System</h1>
 
   <img
     src="https://configcat.com/images/home/logo.svg"
     alt="ConfigCat Logo"
     width="200"
     height="200"
+    class="logo"
   />
 
   <div
@@ -21,8 +22,11 @@
       min="1"
       max="10"
       placeholder="Enter your vote"
+      class="vote-input"
     />
-    <button (click)="submitVote(voteInput.valueAsNumber)">Send Vote!</button>
+    <button class="vote-button" (click)="submitVote(voteInput.valueAsNumber)">
+      Send Vote!
+    </button>
 
     <h3 *ngIf="votes.length > 0">Average Vote: {{ getAverageVote() }}</h3>
   </div>
