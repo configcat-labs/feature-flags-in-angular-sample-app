@@ -1,4 +1,4 @@
-<div id="container">
+<div class="container">
   <h1>Welcome to the voting system</h1>
 
   <img
@@ -8,12 +8,26 @@
     height="200"
   />
 
-  <div id="votingForm" *ngIf="votingFeatureEnabled; else votingClosed">
-    <input type="number" id="vote" name="vote" min="1" max="10" />
-    <button type="button">Send Vote!</button>
+  <div
+    class="voting-form"
+    *ngIf="votingFeatureEnabled && !votingClosed; else votingClosedTemplate"
+  >
+    <h3>Time left: {{ countdown }} seconds</h3>
+    <p>Voting Mode: {{ votingMode }}</p>
+
+    <input
+      type="number"
+      #voteInput
+      min="1"
+      max="10"
+      placeholder="Enter your vote"
+    />
+    <button (click)="submitVote(voteInput.valueAsNumber)">Send Vote!</button>
+
+    <h3 *ngIf="votes.length > 0">Average Vote: {{ getAverageVote() }}</h3>
   </div>
 
-  <ng-template #votingClosed>
+  <ng-template #votingClosedTemplate>
     <h3>Sorry, voting has ended. Stay tuned to see the results!</h3>
   </ng-template>
 </div>
