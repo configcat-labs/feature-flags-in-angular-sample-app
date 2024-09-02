@@ -9,7 +9,7 @@
     class="logo"
   />
 
-  <div class="voting-mode">
+  <div class="voting-mode" *ngIf="votingFeatureEnabled && !votingClosed">
     <label>
       <input
         type="radio"
@@ -19,6 +19,7 @@
         [checked]="votingMode === 'single'"
         [disabled]="votingClosed"
       />
+      <span class="checkmark"></span>
       Single Vote
     </label>
     <label>
@@ -62,6 +63,6 @@
 
   <ng-template #votingClosedTemplate>
     <h3>Sorry, voting has ended. Stay tuned to see the results!</h3>
-    <h3>Final Average Vote: {{ averageVote }}</h3>
+    <h3>Final Average Vote: {{ getAverageVote() }}</h3>
   </ng-template>
 </div>

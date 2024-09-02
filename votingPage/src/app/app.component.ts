@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import * as configcat from 'configcat-js';
 
 type VotingMode = 'single' | 'multiple';
@@ -8,14 +8,14 @@ type VotingMode = 'single' | 'multiple';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   title: string = 'votingPage';
   votingFeatureEnabled: boolean = false;
   votingMode: VotingMode = 'single';
   votes: number[] = [];
   votingClosed: boolean = false;
   countdown: number = 60;
-  averageVote: string = '0';
+  private countdownInterval: any;
 
   constructor() {
     const configCatClient = configcat.getClient(
@@ -31,14 +31,22 @@ export class AppComponent {
     this.startCountdown();
   }
 
+  ngOnDestroy(): void {
+    // Ensure that the interval is cleared when the component is destroyed
+    clearInterval(this.countdownInterval);
+  }
+
   startCountdown(): void {
-    this.countdown = 60; // Reset countdown
-    const interval = setInterval(() => {
+    // Clear any existing interval before starting a new one
+    clearInterval(this.countdownInterval);
+    this.countdown = 60; // Reset countdown to 60 seconds
+    this.votingClosed = false; // Ensure voting is not closed when starting the countdown
+
+    this.countdownInterval = setInterval(() => {
       this.countdown -= 1;
       if (this.countdown <= 0) {
-        clearInterval(interval);
+        clearInterval(this.countdownInterval);
         this.votingClosed = true;
-        this.averageVote = this.getAverageVote(); // Calculate the average vote when voting ends
       }
     }, 1000);
   }
@@ -52,7 +60,7 @@ export class AppComponent {
     if (this.votingMode === 'single') {
       this.votes = [vote];
       this.votingClosed = true;
-      this.averageVote = this.getAverageVote(); // Update average immediately in single mode
+      clearInterval(this.countdownInterval); // Stop countdown when voting is closed
     } else {
       this.votes.push(vote);
     }
@@ -61,9 +69,7 @@ export class AppComponent {
   switchVotingMode(mode: VotingMode): void {
     this.votingMode = mode;
     this.votes = [];
-    this.votingClosed = false;
-    this.averageVote = '0'; // Reset average vote
-    this.startCountdown(); // Restart countdown when mode changes
+    this.startCountdown(); // Restart countdown when switching modes
   }
 
   getAverageVote(): string {
