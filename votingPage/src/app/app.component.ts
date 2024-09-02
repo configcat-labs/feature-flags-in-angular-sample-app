@@ -15,6 +15,7 @@ export class AppComponent {
   votes: number[] = [];
   votingClosed: boolean = false;
   countdown: number = 60;
+  averageVote: string = '0';
 
   constructor() {
     const configCatClient = configcat.getClient(
@@ -31,11 +32,13 @@ export class AppComponent {
   }
 
   startCountdown(): void {
+    this.countdown = 60; // Reset countdown
     const interval = setInterval(() => {
       this.countdown -= 1;
       if (this.countdown <= 0) {
         clearInterval(interval);
         this.votingClosed = true;
+        this.averageVote = this.getAverageVote(); // Calculate the average vote when voting ends
       }
     }, 1000);
   }
@@ -49,6 +52,7 @@ export class AppComponent {
     if (this.votingMode === 'single') {
       this.votes = [vote];
       this.votingClosed = true;
+      this.averageVote = this.getAverageVote(); // Update average immediately in single mode
     } else {
       this.votes.push(vote);
     }
@@ -58,6 +62,8 @@ export class AppComponent {
     this.votingMode = mode;
     this.votes = [];
     this.votingClosed = false;
+    this.averageVote = '0'; // Reset average vote
+    this.startCountdown(); // Restart countdown when mode changes
   }
 
   getAverageVote(): string {
