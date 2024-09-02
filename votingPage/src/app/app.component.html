@@ -40,6 +40,8 @@
   >
     <h3>Time left: {{ countdown }} seconds</h3>
 
+    <img *ngIf="imageUrl" [src]="imageUrl" alt="Random" class="voting-image" />
+
     <input
       type="number"
       #voteInput
