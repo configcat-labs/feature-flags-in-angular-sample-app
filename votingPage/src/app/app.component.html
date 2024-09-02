@@ -9,7 +9,7 @@
     class="logo"
   />
 
-  <div class="voting-mode" *ngIf="votingFeatureEnabled && !votingClosed">
+  <div *ngIf="votingFeatureEnabled && !votingClosed">
     <label>
       <input
         type="radio"
@@ -63,7 +63,15 @@
   </div>
 
   <ng-template #votingClosedTemplate>
-    <h3>Sorry, voting has ended. Stay tuned to see the results!</h3>
+    <h3>The voting has ended! Here are the results!</h3>
+    <div class="voting-form">
+      <img
+        *ngIf="imageUrl"
+        [src]="imageUrl"
+        alt="Random"
+        class="voting-image"
+      />
+    </div>
     <h3>Final Average Vote: {{ getAverageVote() }}</h3>
   </ng-template>
 </div>

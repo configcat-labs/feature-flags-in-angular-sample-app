@@ -10,14 +10,6 @@
   background-color: #f9f9f9;
 }
 
-.logo {
-  margin-bottom: 24px;
-}
-
-.voting-mode {
-  margin-bottom: 24px;
-}
-
 .voting-form {
   display: flex;
   align-items: center;
@@ -28,6 +20,7 @@
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(122, 122, 122, 0.05);
+  margin: 24px 0;
 }
 
 .vote-input {
