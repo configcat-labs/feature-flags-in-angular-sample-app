@@ -23,7 +23,8 @@
 
       <img *ngIf="imageUrl" [src]="imageUrl" alt="Random" class="voting-image" />
 
-      <input type="number" #voteInput min="1" max="10" placeholder="Enter your vote" class="vote-input"
+      <label for="number">Enter a value from <b>1 - 10</b></label>
+      <input name="number" type="number" #voteInput min="1" max="10" placeholder="Enter your vote" class="vote-input"
         [disabled]="votingClosed" />
       <button class="vote-button" (click)="submitVote(voteInput.valueAsNumber)"
         [disabled]="votingMode === 'single' && votes.length > 0">

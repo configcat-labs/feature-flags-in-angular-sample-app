@@ -21,7 +21,7 @@ export class AppComponent {
 
   constructor() {
     const configCatClient = configcat.getClient(
-      'YOUR-SDK-KEY'
+      'CONFIGCAT-SDK-KEY'
     );
 
     configCatClient
