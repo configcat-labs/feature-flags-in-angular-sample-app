@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import * as configcat from 'configcat-js';
 import axios from 'axios';
 
@@ -9,7 +9,7 @@ type VotingMode = 'single' | 'multiple';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent {
   title: string = 'votingPage';
   votingFeatureEnabled: boolean = false;
   votingMode: VotingMode = 'single';
@@ -21,11 +21,11 @@ export class AppComponent implements OnDestroy {
 
   constructor() {
     const configCatClient = configcat.getClient(
-      'configcat-sdk-1/cIXcCIFM50eL1D7-bo-KNw/AoEy1jmHOUCAxu7cBz0ypA'
+      'YOUR-SDK-KEY'
     );
 
     configCatClient
-      .getValueAsync<boolean>('GrandFeature', false)
+      .getValueAsync<boolean>('votingOpen', false)
       .then((value) => {
         this.votingFeatureEnabled = value;
         if (value) {
