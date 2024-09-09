@@ -2,7 +2,7 @@
 
 **[Read the blog post here](https://configcat.com/blog/2022/08/09/using-feature-flags-in-angular/)**
 
-The app is a simple page that enables users to vote on a photo by assigning a number from 1 to 10. Using [ConfigCat's](https://configcat.com/) feature flag services, the application contains a feature flag that is meant to enable and disable the voting feature. When disabled, users see an error message.
+The app is a simple page that allows users to vote on a photo by assigning a number from 1 to 10. Using [ConfigCat's feature flag services](https://configcat.com/), the application uses a feature flag to enable or disable the voting feature. When disabled, a message will show that voting is disabled.
 
 ## Build & Run
 
