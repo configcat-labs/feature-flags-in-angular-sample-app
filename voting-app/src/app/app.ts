@@ -21,7 +21,7 @@ export class App {
   private countdownInterval: any;
 
   constructor() {
-    const configCatClient = configcat.getClient('configcat-sdk-1/C-HdCN7xrUmB6kDjUpl3Rw/Vh6BkatYSUqLKGFP_rVHWA');
+    const configCatClient = configcat.getClient('YOUR-CONFIGCAT-SDK-KEY');
 
     configCatClient.getValueAsync('votingOpen', false).then((value) => {
       this.isVotingFeatureEnabled.set(value);
