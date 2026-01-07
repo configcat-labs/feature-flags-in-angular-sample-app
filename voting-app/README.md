@@ -1,59 +1,56 @@
-# VotingApp
+# Using Feature Flags in an Angular Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.4.
+**[Read the blog post here](https://configcat.com/blog/2022/08/09/using-feature-flags-in-angular/)**
 
-## Development server
+The app is a simple page that allows users to vote on a photo by assigning a number from 1 to 10. Using [ConfigCat's feature flag services](https://configcat.com/), the application uses a feature flag to enable or disable the voting feature. When disabled, a message will show that voting is disabled.
 
-To start a local development server, run:
+## Build & Run
 
-```bash
-ng serve
+### Prerequisites
+
+- [Node.js](https://nodejs.org/en/) and [node package manager](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+- Basic knowledge of HTML, CSS, and JavaScript
+- A code editor installed - For example: [Visual Studio Code](https://code.visualstudio.com/)
+
+### Build and Run
+
+1. Clone this repository:
+
+```sh
+git clone git@github.com:configcat-labs/feature-flags-in-angular-sample-app.git
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+2. Open a terminal at the root of the cloned repository and install the dependencies:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```sh
+npm i
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+3. Add your ConfigCat SDK and feature flag key to `src/app/app.ts`.
 
-```bash
-ng generate --help
+4. Launch the app in your browser with:
+
+```sh
+npm run start
 ```
 
-## Building
+## Learn more
 
-To build the project run:
+Useful links to technical resources.
 
-```bash
-ng build
-```
+- [Angular Website](https://angular.dev/)
+- [Learn Angular](https://angular.dev/tutorials/learn-angular)
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+[**ConfigCat**](https://configcat.com) also supports many other frameworks and languages. Check out the full list of supported SDKs [here](https://configcat.com/docs/sdk-reference/overview/).
 
-## Running unit tests
+You can also explore other code samples for various languages, frameworks, and topics here in the [ConfigCat labs](https://github.com/configcat-labs) on GitHub.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Keep up with ConfigCat on [X](https://x.com/configcat), [Facebook](https://www.facebook.com/configcat), [LinkedIn](https://www.linkedin.com/company/configcat/), and [GitHub](https://github.com/configcat).
 
-```bash
-ng test
-```
+## Author
 
-## Running end-to-end tests
+[Roxana Halati](https://github.com/roxanahalati)
 
-For end-to-end (e2e) testing, run:
+## Contributions
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Contributions are welcome!
