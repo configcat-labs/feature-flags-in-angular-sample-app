@@ -14,11 +14,5 @@ export class App {
   private configCatService = inject(ConfigCatService);
   readonly connectionState = this.configCatService.connectionState.asReadonly();
 
-  isVotingFeatureEnabled = signal(false);
-
-  constructor() {
-    this.configCatService
-      .getValue('votingOpen', false)
-      .then((value) => this.isVotingFeatureEnabled.set(value));
-  }
+  isVotingFeatureEnabled = this.configCatService.getValue('votingOpen', false);
 }
