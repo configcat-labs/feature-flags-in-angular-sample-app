@@ -26,7 +26,7 @@ git clone git@github.com:configcat-labs/feature-flags-in-angular-sample-app.git
 npm i
 ```
 
-3. Add your ConfigCat SDK and feature flag key to `src/app/app.ts`.
+3. Add your ConfigCat SDK and feature flag key to `src/app/configcat.service.ts`.
 
 4. Launch the app in your browser with:
 
