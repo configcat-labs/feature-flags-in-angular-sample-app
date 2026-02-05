@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>Welcome to the Voting System</h1>
+
+  <img
+    src="https://configcat.com/images/home/logo.svg"
+    alt="ConfigCat Logo"
+    width="200"
+    height="200"
+    class="logo"
+  />
+
+  @if (connectionState() === 'disabled' || connectionState() === 'error') {
+    <p class="error-message">Check that you have the correct SDK key and your connection is ok.</p>
+  }
+
+  @if (isVotingFeatureEnabled()) {
+    <app-vote-feature />
+  } @else {
+    <div>
+      <h3>The vote feature is disabled!</h3>
+    </div>
+  }
+</div>
